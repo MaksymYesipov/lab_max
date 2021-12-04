@@ -20,14 +20,17 @@ public class Run {
     }
 
     private static void awaitInputAndDisplayEvenAreaBiggerThanEntered(List<Country> countries) {
+        System.out.println("Enter a number from which even countries area should be found: ");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
-        countries.stream().filter(c -> c.getArea() > input && c.getArea() % 2 == 0).forEach(c -> System.out.println(c.getName()));
+        System.out.println("Country with an even area greater than a certain value entered from the keyboard: ");
+        countries.stream().filter(c -> c.getArea() > input && c.getArea() % 2 == 0).forEach(System.out::println);
 
     }
 
     private static void displayOddYearDigitsCountries(List<Country> countries) {
-        countries.stream().filter(c -> calculateDigitsSum(c.getCreationYear()) % 2 != 0).forEach(c -> System.out.println(c.getName()));
+        System.out.println("Countries with an odd sum of digits in the year of foundation: ");
+        countries.stream().filter(c -> calculateDigitsSum(c.getCreationYear()) % 2 != 0).forEach(c -> System.out.println(c + " Digits sum: " + calculateDigitsSum(c.getCreationYear())));
         System.out.print(System.lineSeparator());
     }
 
@@ -41,25 +44,27 @@ public class Run {
     }
 
     private static void sortByLongAndDisplay(List<Country> countries) {
+        System.out.println("Descending duration of existence: ");
         countries.stream()
                 .sorted(Comparator.comparing((Country c) -> 2021 - c.getCreationYear()).reversed())
-                .forEach(c -> System.out.println(c.getName()));
+                .forEach(c -> System.out.println(c + " Exists " + (2021 - c.getCreationYear()) + " years"));
         System.out.print(System.lineSeparator());
     }
 
     private static void sortByNameAndDisplay(List<Country> countries) {
-        countries.stream().sorted(Comparator.comparing(Country::getName)).forEach(c -> System.out.println(c.getName()));
+        System.out.println("List of countries sorted alphabetically: ");
+        countries.stream().sorted(Comparator.comparing(Country::getName)).forEach(System.out::println);
         System.out.print(System.lineSeparator());
     }
 
     private static void defineMaxAreaAndPrintResult(List<Country> countries) {
         Country maxArea = countries.stream().max(Comparator.comparingDouble(Country::getArea)).orElse(new Country());
-        System.out.println("Country with max area: " + maxArea.getName() + System.lineSeparator());
+        System.out.println("Country with max area: " + maxArea + System.lineSeparator());
     }
 
     private static void defineMinYearAndPrintResult(List<Country> countries) {
         Country minYear = countries.stream().min(Comparator.comparingInt(Country::getCreationYear)).orElse(new Country());
-        System.out.println("Country with min creation year: " + minYear.getName() + System.lineSeparator());
+        System.out.println("Country with min creation year: " + minYear + System.lineSeparator());
     }
 
     private static List<Country> initCountries() {

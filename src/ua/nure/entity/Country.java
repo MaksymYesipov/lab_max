@@ -25,4 +25,9 @@ public class Country {
     public float getArea() {
         return area;
     }
+
+    @Override
+    public String toString() {
+        return name + ", founded in " + creationYear + ", area: " + area;
+    }
 }
