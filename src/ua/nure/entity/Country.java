@@ -18,23 +18,11 @@ public class Country {
         return creationYear;
     }
 
-    public void setCreationYear(int creationYear) {
-        this.creationYear = creationYear;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public float getArea() {
         return area;
-    }
-
-    public void setArea(float area) {
-        this.area = area;
     }
 }
